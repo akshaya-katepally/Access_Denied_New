@@ -1,10 +1,10 @@
 :root {
-  --color-bg: #1a1a1a; /* Dark background */
-  --color-primary: #ff4c4c; /* Red */
-  --color-secondary: #2a2a2a; /* Dark grey */
-  --color-text: #f0f0f0; /* Light grey */
-  --color-accent: #ff6f61; /* Accent red */
-  --color-button-hover: #e53935; /* Darker red */
+  --color-bg: #1a1a1a; 
+  --color-primary: #6e2855; 
+  --color-secondary: #2a2a2a; 
+  --color-text: #f0f0f0; 
+  --color-accent: #c13a68; 
+  --color-button-hover: #c13a68; 
   --color-box-shadow: rgba(0, 0, 0, 0.3);
   --color-box-shadow-hover: rgba(0, 0, 0, 0.5);
   --border-radius: 10px;
@@ -33,16 +33,12 @@ button {
 }
 
 input, textarea {
-  background-color: var(--color-secondary); /* Dark grey input fields */
-  color: var(--color-text); /* Light grey text */
-  border: 1px solid var(--color-accent); /* Darker grey border */
+  background-color: var(--color-secondary);
+  color: var(--color-text); 
+  border: 1px solid var(--color-primary); 
 }
 
 input::placeholder, textarea::placeholder {
-  color: var(--color-text); /* Lighter grey placeholder text */
+  color: var(--color-text); 
 }
 
-header {
-  background-color: var(--color-secondary); /* Dark grey background for header */
-  box-shadow: 0 2px 5px var(--color-box-shadow); /* Subtle shadow for header */
-}

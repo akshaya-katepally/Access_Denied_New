@@ -1,4 +1,3 @@
-/* Home.css */
 .home {
   text-align: center;
 }
@@ -18,110 +17,58 @@
   object-fit: cover;
 }
 
-.options-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 2rem 0;
+.overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: var(--color-text);
+  z-index: 10;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.7); 
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
-.option {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 80%;
-  margin: 50px 0;
-  opacity: 0;
-  transition: opacity 2s ease-out, transform 2.5s ease-out;
-  text-decoration: none;
+.overlay h2, .overlay h3, .overlay p {
+  margin: 0;
+  padding: 10px;
+  animation: fadeIn 5s ease-in-out infinite;
 }
 
-.option.visible.summarizer {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.option.visible.qna-generator {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.option.visible.flashcards {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.option.summarizer {
-  transform: translateX(-100%);
-}
-
-.option.qna-generator {
-  transform: translateX(100%);
-}
-
-.option.flashcards {
-  transform: translateX(-100%);
-}
-
-.option.summarizer .content,
-.option.flashcards .content {
-  order: 1;
-  text-align: left;
-}
-
-.option.summarizer img,
-.option.flashcards img {
-  order: 2;
-}
-
-.option.qna-generator .content {
-  order: 2;
-  text-align: left;
-}
-
-.option.qna-generator img {
-  order: 1;
-}
-
-.option img {
-  width: 50%;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-}
-
-.option .content {
-  width: 50%;
-  padding: 0 20px;
-  cursor: pointer;
-}
-
-.option h2 {
+.overlay h2 {
   font-size: 2.5rem;
-  margin-bottom: 10px;
+  font-weight: bold;
+  color: var(--color-accent); 
 }
 
-.option p {
+.overlay h3 {
+  font-size: 2rem;
+  color: var(--color-text);
+}
+
+.overlay ul {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+}
+
+.overlay li {
   font-size: 1.2rem;
+  color: var(--color-text);
+  animation: fadeIn 5s ease-in-out infinite 3s;
 }
 
-@media (max-width: 768px) {
-  .option {
-    flex-direction: column;
-    text-align: center;
+@keyframes fadeIn {
+  0%, 100% {
+    opacity: 0;
   }
-
-  .option img {
-    width: 80%;
-    margin-bottom: 20px;
-  }
-
-  .option .content {
-    width: 100%;
+  50% {
+    opacity: 1;
   }
 }
 
-/* Styles for the QnA Generator section */
 .qna-container {
   position: relative;
   height: 100vh;
@@ -166,8 +113,34 @@
   text-align: justify;
 }
 
+.input-container {
+  position: relative;
+}
+
+.input-container textarea {
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--color-primary);
+  background: var(--color-secondary);
+  color: var(--color-text);
+  resize: none;
+}
+
+.input-container .file-name {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  color: var(--color-text);
+  font-size: 0.9em;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 2px 5px;
+  border-radius: var(--border-radius);
+}
+
 .qna-content input[type="file"] {
-  margin-bottom: 1rem;
+  margin-top: 1rem;
   padding: 0.5rem;
   border-radius: var(--border-radius);
   border: 1px solid var(--color-primary);
@@ -175,6 +148,16 @@
   color: var(--color-text);
   display: block;
   margin: 0 auto;
+}
+
+.qna-content input[type="text"] {
+  width: 100%;
+  margin-top: 1rem;
+  padding: 0.5rem;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--color-primary);
+  background: var(--color-secondary);
+  color: var(--color-text);
 }
 
 .qna-content button {
@@ -191,29 +174,4 @@
 
 .qna-content button:hover {
   background-color: var(--color-button-hover);
-}
-
-.qna-list {
-  margin-top: 2rem;
-  width: 100%;
-  text-align: left;
-}
-
-.qna-pair {
-  background: var(--color-secondary);
-  padding: 1rem;
-  margin-bottom: 1rem;
-  border-radius: var(--border-radius);
-  border: 1px solid var(--color-primary);
-}
-
-.qna-pair .question, .qna-pair .answer {
-  font-size: 1.2em;
-  margin: 5px 0;
-}
-
-.error {
-  color: red;
-  margin-top: 10px;
-  text-align: center;
 }

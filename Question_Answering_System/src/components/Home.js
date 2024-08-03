@@ -1,6 +1,5 @@
 // Home.js
 import React, { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
 import './Home.css';
 import * as THREE from 'three';
 import NET from 'vanta/dist/vanta.net.min';
@@ -9,6 +8,7 @@ const Home = () => {
   const optionsRef = useRef([]);
   const vantaRef = useRef(null);
   const [file, setFile] = useState(null);
+  const [fileName, setFileName] = useState("");
   const [text, setText] = useState("");
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
@@ -62,7 +62,9 @@ const Home = () => {
   }, []);
 
   const handleFileChange = (event) => {
-    setFile(event.target.files[0]);
+    const uploadedFile = event.target.files[0];
+    setFile(uploadedFile);
+    setFileName(uploadedFile.name);
   };
 
   const handleTextChange = (event) => {
@@ -116,16 +118,37 @@ const Home = () => {
         <video autoPlay loop muted>
           <source src="/video.mp4" type="video/mp4" />
         </video>
+        <div className="overlay">
+          <h2>Access Denied X</h2>
+          <h3>Question Answering System</h3>
+          <ul>
+            <li>Team Members:</li>
+            <li>Akshaya Katepally</li>
+            <li>Medagam Shishira Reddy</li>
+            <li>Varshita Pasala</li>
+          </ul>
+        </div>
       </div>
 
       <div className="qna-container" ref={vantaRef}>
         <div className="qna-content">
-          <h1>QnA Generator</h1>
+          <h1>QnA System</h1>
           <p>Upload a PDF file or enter text along with a question to get an answer.</p>
           <form onSubmit={handleFormSubmit}>
+            <div className="input-container">
+              <textarea
+                value={text}
+                onChange={handleTextChange}
+                placeholder="Enter text here"
+              />
+            </div>
             <input type="file" onChange={handleFileChange} />
-            <textarea value={text} onChange={handleTextChange} placeholder="Enter text here"></textarea>
-            <input type="text" value={question} onChange={handleQuestionChange} placeholder="Enter your question" />
+            <input
+              type="text"
+              value={question}
+              onChange={handleQuestionChange}
+              placeholder="Enter your question"
+            />
             <button type="submit">Get Answer</button>
           </form>
           {error && <p className="error">{error}</p>}

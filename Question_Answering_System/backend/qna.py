@@ -8,10 +8,8 @@ from transformers import pipeline
 app = Flask(__name__)
 CORS(app)
 
-# Suppress the huggingface_hub symlinks warning
 os.environ['HF_HUB_DISABLE_SYMLINKS_WARNING'] = '1'
 
-# Print start message when the application starts
 print(f"{datetime.datetime.now()} - Flask app started.")
 
 def extract_text_from_pdf(pdf):
