@@ -121,12 +121,6 @@ const Home = () => {
         <div className="overlay">
           <h2>Access Denied X</h2>
           <h3>Question Answering System</h3>
-          <ul>
-            <li>Team Members:</li>
-            <li>Akshaya Katepally</li>
-            <li>Medagam Shishira Reddy</li>
-            <li>Varshita Pasala</li>
-          </ul>
         </div>
       </div>
 
